@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
-import ProductPage from './pages/ProductPage'
+import ProductPage from './pages/Products/ProductPage'
 
 function App() {
   return (
