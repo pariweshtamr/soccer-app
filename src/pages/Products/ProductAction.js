@@ -20,7 +20,6 @@ export const fetchAProductById = (_id) => async (dispatch) => {
   dispatch(respondPending())
 
   const data = await getAProductById(_id)
-  console.log(data)
 
   if (data.length) {
     dispatch(getSingleProductSuccess(data[0]))
