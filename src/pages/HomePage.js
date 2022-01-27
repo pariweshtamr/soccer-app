@@ -8,7 +8,7 @@ import { fetchProducts } from './Products/ProductAction'
 const HomePage = () => {
   const dispatch = useDispatch()
   const { isPending, productResponse, products } = useSelector(
-    (state) => state.product || {},
+    (state) => state.product || [],
   )
 
   useEffect(() => {

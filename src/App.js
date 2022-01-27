@@ -20,7 +20,8 @@ function App() {
         <main>
           <Routes>
             <Route path="/product/:id" element={<ProductPage />}></Route>
-            <Route exact path="/" element={<HomePage />}></Route>
+            <Route path="/" exact element={<HomePage />}></Route>
+            <Route>404 Not Found</Route>
           </Routes>
         </main>
         <footer className="row center">All rights reserved</footer>

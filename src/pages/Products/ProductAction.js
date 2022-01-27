@@ -2,9 +2,9 @@ import {
   respondPending,
   respondFail,
   getProductsSuccess,
-  getSingleProductsSuccess,
+  getSingleProductSuccess,
 } from './ProductSlice'
-import { getProducts } from '../../api/productAPI'
+import { getAProductById, getProducts } from '../../api/productAPI'
 
 export const fetchProducts = () => async (dispatch) => {
   dispatch(respondPending())
@@ -14,4 +14,18 @@ export const fetchProducts = () => async (dispatch) => {
   } catch (error) {
     dispatch(respondFail(data))
   }
+}
+
+export const fetchAProductById = (_id) => async (dispatch) => {
+  dispatch(respondPending())
+
+  const data = await getAProductById(_id)
+  console.log(data)
+
+  if (data.length) {
+    dispatch(getSingleProductSuccess(data[0]))
+    return
+  }
+
+  dispatch(respondFail(data))
 }
