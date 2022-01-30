@@ -27,16 +27,94 @@ body {
 }
 header {
   grid-area: header;
+  height: 90px;
   background-color: #203040;
 }
 main {
   grid-area: main;
-  padding: 1rem;
+  padding: 5rem 2rem;
 }
 footer {
   grid-area: footer;
   background-color: #203040;
   color: #ffffff;
+}
+
+/* NavBar */
+.nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+}
+.brand {
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.right {
+  display: flex;
+}
+.signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ffffff;
+}
+.nav-bag {
+  display: flex;
+  align-items: center;
+  margin: 0 2rem;
+  cursor: pointer;
+}
+.nav-bag i {
+  font-size: 3rem;
+  color: #ffffff;
+}
+.nav-bag i:hover {
+  color: #ff8000;
+}
+.bag-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  color: #000;
+  background: yellow;
+  border-radius: 50%;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  margin-left: -1rem;
+  margin-bottom: 3rem;
+}
+.input_wrapper i {
+  margin: 0 1rem;
+  color: #e0e0ff;
+}
+
+/* HomePage */
+.homePage {
+  display: flex;
+}
+
+/* Not Found */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(68, 68, 68);
+  min-height: 80vh;
+}
+.not-found h2 {
+  font-size: 5rem;
+}
+.not-found p {
+  font-size: 2.5rem;
 }
 
 /* Common classes */
@@ -89,15 +167,6 @@ button.primary {
 button.block {
   width: 100%;
 }
-header a {
-  color: #ffffff;
-  padding: 2rem;
-}
-a.brand {
-  color: #ffffff;
-  font-size: 3rem;
-  font-weight: bold;
-}
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -123,7 +192,7 @@ img {
   padding: 3rem;
 }
 img.medium {
-  max-width: 30rem;
+  max-width: 25rem;
   width: 100%;
 }
 img.large {
@@ -135,7 +204,7 @@ img.large {
   border: 0.1rem #c0c0c0 solid;
   background-color: #f8f8f8;
   border-radius: 0.5rem;
-  margin: 1rem;
+  margin: 2rem;
 }
 .card-body {
   padding: 1rem;
@@ -146,6 +215,26 @@ img.large {
 .price {
   font-size: 2rem;
   padding: 1rem;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.addToCartButton {
+  background-color: #56cfe1;
+  padding: 5px 25px;
+  color: #e0e0ff;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  min-height: 40px;
+  border: 1px solid;
+  width: 95%;
+}
+.addToCartButton:hover {
+  color: #404040;
 }
 
 /* Rating */
