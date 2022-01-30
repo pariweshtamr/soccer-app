@@ -77,7 +77,7 @@ footer {
 .nav-bag i:hover {
   color: #ff8000;
 }
-.bag-quantity {
+.badge {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,6 +90,9 @@ footer {
   font-size: 1.5rem;
   margin-left: -1rem;
   margin-bottom: 3rem;
+}
+.empty-cart {
+  display: none;
 }
 .input_wrapper i {
   margin: 0 1rem;

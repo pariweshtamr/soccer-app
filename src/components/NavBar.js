@@ -23,7 +23,11 @@ const NavBar = () => {
           <div className="nav-bag">
             <i className="fas fa-shopping-cart"></i>
             <span className="bag-quantity">
-              {cartItems.length > 0 && <span>{cartItems.length}</span>}
+              {cartItems.length > 0 ? (
+                <span className="badge">{cartItems.length}</span>
+              ) : (
+                <span className="empty-cart"></span>
+              )}
             </span>
           </div>
         </Link>
