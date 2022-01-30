@@ -15,9 +15,6 @@ const Product = (props) => {
             numReviews={product.numReviews}
           ></Rating>
           <div className="price">${product.price}</div>
-          <div className="btn">
-            <button className="addToCartButton">ADD TO CART</button>
-          </div>
         </div>
       </Link>
     </div>

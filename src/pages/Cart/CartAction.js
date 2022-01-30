@@ -1,4 +1,8 @@
-import { addProductToCartSuccess, addProductToCartFail } from './CartSlice'
+import {
+  addProductToCartSuccess,
+  removeProductFromCartSuccess,
+  addProductToCartFail,
+} from './CartSlice'
 import { addToCartById } from '../../api/cartAPI'
 
 export const addToCart = (_id, qty) => async (dispatch, getState) => {
@@ -18,4 +22,9 @@ export const addToCart = (_id, qty) => async (dispatch, getState) => {
     return
   }
   dispatch(addProductToCartFail(data))
+}
+
+export const removeFromCart = (_id) => (dispatch, getState) => {
+  dispatch(removeProductFromCartSuccess(_id))
+  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
 }

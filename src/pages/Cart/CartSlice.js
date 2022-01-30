@@ -13,7 +13,6 @@ const cartSlice = createSlice({
     addProductToCartSuccess: (state, action) => {
       const item = action.payload
       const existItem = state.cartItems.find((x) => x.product === item.product)
-      console.log(item)
 
       if (existItem) {
         return {
@@ -26,6 +25,14 @@ const cartSlice = createSlice({
         return { ...state, cartItems: [...state.cartItems, item] }
       }
     },
+
+    removeProductFromCartSuccess: (state, action) => {
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+      }
+    },
+
     addProductToCartFail: (state, { payload }) => {
       state.cartResponse = payload
     },
@@ -33,6 +40,10 @@ const cartSlice = createSlice({
 })
 
 const { reducer, actions } = cartSlice
-export const { addProductToCartSuccess, addProductToCartFail } = actions
+export const {
+  addProductToCartSuccess,
+  removeProductFromCartSuccess,
+  addProductToCartFail,
+} = actions
 
 export default reducer
