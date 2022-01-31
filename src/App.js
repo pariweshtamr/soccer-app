@@ -4,6 +4,7 @@ import NotFound from './components/NotFound'
 import CartPage from './pages/Cart/CartPage'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/Products/ProductPage'
+import SigninPage from './pages/SigninPage'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/cart/:id" element={<CartPage />}></Route>
             <Route path="/cart" element={<CartPage />}></Route>
             <Route path="/product/:id" element={<ProductPage />}></Route>
+            <Route path="/signin" element={<SigninPage />}></Route>
             <Route path="/" exact element={<HomePage />}></Route>
             <Route path="/not-found" element={<NotFound />}></Route>
           </Routes>
