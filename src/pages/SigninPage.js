@@ -1,20 +1,50 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import MessageBox from '../components/MessageBox'
+import LoadingBox from '../components/LoadingBox'
+import { signin } from './User/UserAction'
 
 const SigninPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const redirect = location.search ? location.search.split('=')[1] : '/'
+
+  const { userInfo, isPending, signinResponse } = useSelector(
+    (state) => state.userSignin,
+  )
+
+  const dispatch = useDispatch()
 
   const submitHandler = (e) => {
     e.preventDefault()
     // TODO: signin action
+    dispatch(signin(email, password))
   }
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect)
+    }
+  }, [navigate, redirect, userInfo])
+
   return (
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>Sign In</h1>
         </div>
+        {isPending && <LoadingBox></LoadingBox>}
+        {signinResponse?.message && (
+          <MessageBox
+            variant={signinResponse.status === 'success' ? 'success' : 'danger'}
+          >
+            {signinResponse.message}
+          </MessageBox>
+        )}
         <div>
           <label htmlFor="email">Email address</label>
           <input
