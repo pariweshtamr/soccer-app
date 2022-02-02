@@ -2,6 +2,7 @@ import {
   addProductToCartSuccess,
   removeProductFromCartSuccess,
   addProductToCartFail,
+  saveShippingAddress,
 } from './CartSlice'
 import { addToCartById } from '../../api/cartAPI'
 
@@ -27,4 +28,9 @@ export const addToCart = (_id, qty) => async (dispatch, getState) => {
 export const removeFromCart = (_id) => (dispatch, getState) => {
   dispatch(removeProductFromCartSuccess(_id))
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+}
+
+export const cartSaveShippingAddress = (data) => (dispatch) => {
+  dispatch(saveShippingAddress(data))
+  localStorage.setItem('shippingAddress', JSON.stringify(data))
 }

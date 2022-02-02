@@ -5,8 +5,9 @@ const initialState = {
     ? JSON.parse(localStorage.getItem('userInfo'))
     : null,
   isPending: false,
-  isSignedIn: false,
   signinResponse: {},
+  registerResponse: {},
+  isSignedIn: false,
 }
 
 const userSlice = createSlice({
@@ -16,15 +17,24 @@ const userSlice = createSlice({
     requestPending: (state) => {
       state.isPending = true
     },
+    registerSuccess: (state, { payload }) => {
+      state.isPending = false
+      state.userInfo = payload
+      state.registerResponse = payload || {}
+    },
+    registerFail: (state, { payload }) => {
+      state.isPending = false
+      state.registerResponse = payload
+    },
     signinSuccess: (state, { payload }) => {
+      state.userInfo = payload || {}
       state.isPending = false
       state.signinResponse = {}
       state.isSignedIn = true
-      state.userInfo = payload || {}
     },
     signinFail: (state, { payload }) => {
       state.isPending = false
-      state.signinResponse = payload || {}
+      state.signinResponse = payload
     },
     signoutSuccess: (state) => {
       state.userInfo = {}
@@ -40,6 +50,8 @@ export const {
   signinSuccess,
   signinFail,
   signoutSuccess,
+  registerSuccess,
+  registerFail,
 } = actions
 
 export default reducer

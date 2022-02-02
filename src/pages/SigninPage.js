@@ -14,14 +14,14 @@ const SigninPage = () => {
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   const { userInfo, isPending, signinResponse } = useSelector(
-    (state) => state.userSignin,
+    (state) => state.user,
   )
 
   const dispatch = useDispatch()
 
   const submitHandler = (e) => {
     e.preventDefault()
-    // TODO: signin action
+
     dispatch(signin(email, password))
   }
 
@@ -78,7 +78,9 @@ const SigninPage = () => {
           <label />
           <div>
             New customer? {''}
-            <Link to="/register">Create your account</Link>
+            <Link to={`/register?redirect=${redirect}`}>
+              Create your account
+            </Link>
           </div>
         </div>
       </form>

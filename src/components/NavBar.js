@@ -5,8 +5,7 @@ import { signout } from '../pages/User/UserAction'
 
 const NavBar = () => {
   const { cartItems } = useSelector((state) => state.cart)
-  const { userInfo } = useSelector((state) => state.userSignin)
-  console.log(userInfo)
+  const { userInfo } = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
   const signoutHandler = () => {
@@ -45,12 +44,12 @@ const NavBar = () => {
               {userInfo.name} <i className="fa fa-caret-down"></i>
             </Link>
             <ul className="dropdown-content">
-              <Link to="#signout" onClick={signoutHandler}>
+              {/* <Link to="#signout" onClick={signoutHandler}>
                 Sign Out
-              </Link>
-              {/* <a href="/" onClick={signoutHandler}>
+              </Link> */}
+              <a href="/" onClick={signoutHandler}>
                 Sign Out
-              </a> */}
+              </a>
             </ul>
           </div>
         ) : (

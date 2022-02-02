@@ -5,6 +5,9 @@ import CartPage from './pages/Cart/CartPage'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/Products/ProductPage'
 import SigninPage from './pages/SigninPage'
+import RegisterPage from './pages/RegisterPage'
+import EmailVerification from './pages/EmailVerification/EmailVerification'
+import ShippingAddressPage from './pages/ShippingAddress/ShippingAddressPage'
 
 function App() {
   return (
@@ -17,6 +20,12 @@ function App() {
             <Route path="/cart" element={<CartPage />}></Route>
             <Route path="/product/:id" element={<ProductPage />}></Route>
             <Route path="/signin" element={<SigninPage />}></Route>
+            <Route path="/register" element={<RegisterPage />}></Route>
+            <Route
+              path="/email-verification"
+              element={<EmailVerification />}
+            ></Route>
+            <Route path="/shipping" element={<ShippingAddressPage />}></Route>
             <Route path="/" exact element={<HomePage />}></Route>
             <Route path="/not-found" element={<NotFound />}></Route>
           </Routes>
