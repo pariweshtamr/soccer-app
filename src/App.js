@@ -8,6 +8,7 @@ import SigninPage from './pages/SigninPage'
 import RegisterPage from './pages/RegisterPage'
 import EmailVerification from './pages/EmailVerification/EmailVerification'
 import ShippingAddressPage from './pages/ShippingAddress/ShippingAddressPage'
+import PaymentMethodPage from './pages/Payment/PaymentMethodPage'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               element={<EmailVerification />}
             ></Route>
             <Route path="/shipping" element={<ShippingAddressPage />}></Route>
+            <Route path="/payment" element={<PaymentMethodPage />}></Route>
             <Route path="/" exact element={<HomePage />}></Route>
             <Route path="/not-found" element={<NotFound />}></Route>
           </Routes>

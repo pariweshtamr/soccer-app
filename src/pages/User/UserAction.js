@@ -15,6 +15,7 @@ export const signin = (email, password) => async (dispatch) => {
   const data = await signinUser({ email, password })
   try {
     dispatch(signinSuccess(data))
+    localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
     dispatch(signinFail(data))
   }
@@ -23,6 +24,7 @@ export const signin = (email, password) => async (dispatch) => {
 export const signout = () => (dispatch) => {
   localStorage.removeItem('userInfo')
   localStorage.removeItem('cartItems')
+  localStorage.removeItem('shippingAddress')
   dispatch(signoutSuccess())
 }
 

@@ -7,6 +7,7 @@ const initialState = {
   shippingAddress: localStorage.getItem('shippingAddress')
     ? JSON.parse(localStorage.getItem('shippingAddress'))
     : {},
+  paymentMethod: 'Stripe',
 }
 
 const cartSlice = createSlice({
@@ -43,6 +44,10 @@ const cartSlice = createSlice({
     saveShippingAddress: (state, { payload }) => {
       return { ...state, shippingAddress: { payload } }
     },
+
+    savePaymentMethod: (state, { payload }) => {
+      return { ...state, paymentMethod: { payload } }
+    },
   },
 })
 
@@ -52,6 +57,7 @@ export const {
   removeProductFromCartSuccess,
   addProductToCartFail,
   saveShippingAddress,
+  savePaymentMethod,
 } = actions
 
 export default reducer

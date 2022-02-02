@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import CheckoutSteps from '../../components/CheckoutSteps'
@@ -6,6 +6,7 @@ import { cartSaveShippingAddress } from '../Cart/CartAction'
 
 const ShippingAddressPage = () => {
   const { shippingAddress } = useSelector((state) => state.cart)
+  const { isSignedIn, userInfo } = useSelector((state) => state.user)
 
   const [fullName, setFullName] = useState(shippingAddress.fullName)
   const [address, setAddress] = useState(shippingAddress.address)
@@ -15,18 +16,22 @@ const ShippingAddressPage = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const { isSignedIn, userInfo } = useSelector((state) => state.user)
-  if (!isSignedIn || !userInfo) {
-    navigate('/signin')
-  }
+  useEffect(() => {
+    if (!isSignedIn || !userInfo) {
+      navigate('/signin', { replace: true })
+    }
+  })
 
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(
       cartSaveShippingAddress({ fullName, address, city, postalCode, country }),
     )
-    navigate('/payment')
+    if (shippingAddress) {
+      navigate('/payment')
+    }
   }
+
   return (
     <div>
       <CheckoutSteps step1 step2></CheckoutSteps>

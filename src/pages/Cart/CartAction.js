@@ -3,6 +3,7 @@ import {
   removeProductFromCartSuccess,
   addProductToCartFail,
   saveShippingAddress,
+  savePaymentMethod,
 } from './CartSlice'
 import { addToCartById } from '../../api/cartAPI'
 
@@ -33,4 +34,8 @@ export const removeFromCart = (_id) => (dispatch, getState) => {
 export const cartSaveShippingAddress = (data) => (dispatch) => {
   dispatch(saveShippingAddress(data))
   localStorage.setItem('shippingAddress', JSON.stringify(data))
+}
+
+export const cartSavePaymentMethod = (data) => (dispatch) => {
+  dispatch(savePaymentMethod(data))
 }
